@@ -1,0 +1,90 @@
+#include<stdio.h>
+#include<conio.h>
+#include<iostream.h>
+#include<iomanip.h>
+judul()
+{
+cout<<"============================================================================"<<endl;
+cout<<"                     GAJI KARYAWAN PT.RITRIBUSI PERBAIKAN JALAN\n";
+}
+garis1()
+{
+cout<<"============================================================================"<<endl;
+}
+jabatan()
+{
+}
+main()
+{
+char nmkar[25][35],jabatan[20][34],gol[20][30],lagi;
+int  nip[20],gapok[20],tunjab[20],tot[20],totgaji[20],i,j;
+awal:
+clrscr();
+judul();
+garis1();
+cout<<"Masukan Jumlah Data     = ";cin>>j;
+clrscr();
+judul();
+garis1();
+for(i=1;i<=j;i++)
+{
+cout<<"Data ke-"<<i<<endl;
+cout<<"NIP                     = ";cin>>nip[i];
+cout<<"Nama Karyawan           = ";gets(nmkar[i]);
+cout<<"Golongan [A/B/C]        = ";cin>>gol[i];
+cout<<"Gaji Pokok              = ";cin>>gapok[i];
+
+if(strcmp(gol[i],"A")==0||strcmp(gol[i],"a")==0)
+{
+strcpy(jabatan[i],"Direktur");
+}
+
+else if(strcmp(gol[i],"B")==0||strcmp(gol[i],"b")==0)
+{
+strcpy(jabatan[i],"Manager");
+}
+
+else if(strcmp(gol[i],"C")==0||strcmp(gol[i],"c")==0)
+{
+strcpy(jabatan[i],"Staff");
+}
+else
+{
+strcpy(gol[i],"salah kode");
+}
+cout<<"Jabatan                 = "<<jabatan[i]<<endl;
+tot[i]=gapok[i]*0.2;
+cout<<"Tunjangan               = "<<tot[i]<<endl;
+cout<<endl;
+totgaji[i]=gapok[i]+tot[i];
+}
+clrscr();
+judul();
+garis1();
+cout<<"No. NIP       Nama      Kode  Jabatan     Gaji Pokok   Tunjangan  Total Gaji"<<endl;
+cout<<"              Karyawan  Gol                          "<<endl;
+garis1();
+for(i=1;i<=j;i++)
+{
+cout<<setiosflags(ios::left)<<setw(4)<<i;
+cout<<setiosflags(ios::left)<<setw(10)<<nip[i];
+cout<<setiosflags(ios::left)<<setw(10)<<nmkar[i];
+cout<<setiosflags(ios::left)<<setw(6)<<gol[i];
+cout<<setiosflags(ios::left)<<setw(12)<<jabatan[i];
+cout<<setiosflags(ios::left)<<setw(13)<<gapok[i];
+cout<<setiosflags(ios::left)<<setw(11)<<tot[i];
+cout<<setiosflags(ios::left)<<setw(10)<<totgaji[i]<<endl;
+}
+garis1();
+cout<<endl<<endl;
+cout<<"Anda Ingin Menginput Data Lagi[Y/T]=";cin>>lagi;
+if(lagi=='Y'||lagi=='y')
+goto awal;
+else
+goto akhir;
+akhir:
+clrscr();
+cout<<endl;
+cout<<"\t\tTERIMA KASIH ATAS KEDATANGANNYA TEKAN ENTER UNTUK KELUAR";
+getch();
+}
